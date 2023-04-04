@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
+/*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:12:36 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/03 18:22:31 by zakariyaham      ###   ########.fr       */
+/*   Updated: 2023/04/04 14:27:00 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	check_zero(char **argv)
 int	check_args(int argc, char **argv)
 {
 	if (argc != 5 && argc != 6)
-		return (s_fd("wrong_number of arguement", 2) , 1);
+		return (s_fd("wrong_number of arguement", 2), 1);
 	if (check_number_of_philo(argv[1]) == 1)
 		return (s_fd("something is wrong with the number of _philo", 2), 1);
 	if (check_number_of_philo(argv[2]) == 1)
