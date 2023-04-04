@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
+/*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:16:08 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/03 18:28:44 by zakariyaham      ###   ########.fr       */
+/*   Updated: 2023/04/04 16:03:49 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	monitoring(t_philo **philo, int i)
 {
-	usleep(5000);
 	while (*philo[1]->isdead != 1)
 	{
-		pthread_mutex_unlock(philo[++i]->last_eat);
+		pthread_mutex_lock(philo[++i]->last_eat);
 		if (philo[i]->nb_eat == 0)
 			return (pthread_mutex_unlock(philo[i]->last_eat));
 		if (ft_calculate_time() - philo[i]->time_last_eat >= philo[i]->time_die)
