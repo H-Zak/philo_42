@@ -6,20 +6,26 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:07:23 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/04 16:21:51 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:45:06 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	eating(t_philo *philo)
+int	eating(t_philo *philo)
 {
 	if (philo->who_am_i % 2 == 1)
-		odd(philo);
+	{
+		if (odd(philo) == 9)
+			return (9);
+	}
 	else
-		even(philo);
-	if (is_it_dead(philo, 0) != 1)
-		return ;
+	{
+		if (even(philo) == 9)
+			return (9);
+	}
+	if (is_it_dead(philo, 2) != 1)
+		return (9);
 	pthread_mutex_lock(philo->last_eat);
 	philo->nb_eat--;
 	philo->time_last_eat = ft_calculate_time();
@@ -27,7 +33,8 @@ void	eating(t_philo *philo)
 	ft_write(philo, "is eating");
 	usleep(philo->time_eat * 1000);
 	if (is_it_dead(philo, 2) != 1)
-		return ;
+		return (9);
+	return (0);
 }
 
 void	sleeping(t_philo *philo)
@@ -60,14 +67,21 @@ void	*ft_routine(void *p)
 	pthread_mutex_unlock(philo->last_eat);
 	while (philo->nb_eat != 0)
 	{
-		eating(philo);
-		if (*philo->isdead == 1)
+		if (eating(philo) == 9)
+			return (NULL);
+		// if (*philo->isdead == 1)
+		// 	return (NULL);
+		if (is_it_dead(philo, 2) != 1)
 			return (NULL);
 		if (philo->nb_eat == 0)
 			break ;
 		sleeping(philo);
 		thinking(philo);
 	}
-	unlock_even(philo, 2);
+	//unlock_even(philo, 2);
+	if (philo->who_am_i % 2 == 1)
+		unlock_odd(philo, 2);
+	else
+		unlock_even(philo, 2);
 	return (NULL);
 }

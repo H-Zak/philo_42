@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   odd_or_even.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
+/*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:31:26 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/03 18:27:49 by zakariyaham      ###   ########.fr       */
+/*   Updated: 2023/04/04 17:43:05 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,36 @@ int	is_it_dead(t_philo *philo, int forks)
 	return (1);
 }
 
-void	even(t_philo *philo)
+int	even(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->forks[philo->who_am_i]);
 	if (is_it_dead(philo, 1) != 1)
-		return ;
+		return (9);
 	ft_write(philo, "has taken a fork");
-	pthread_mutex_lock(&philo->forks[philo->who_am_i - 1]);
+	if (philo->who_am_i == 1)
+		pthread_mutex_unlock(&philo->forks[philo->nb_philo]);
+	else
+		pthread_mutex_lock(&philo->forks[philo->who_am_i - 1]);
 	if (is_it_dead(philo, 2) != 1)
-		return ;
+		return (9);
 	ft_write(philo, "has taken a fork");
+	return (0);
 }
 
-void	odd(t_philo *philo)
+int	odd(t_philo *philo)
 {
 	if (philo->who_am_i == 1)
 		pthread_mutex_lock(&philo->forks[philo->nb_philo]);
 	else
 		pthread_mutex_lock(&philo->forks[philo->who_am_i - 1]);
 	if (is_it_dead(philo, 1) != 1)
-		return ;
+		return (9);
+	//rajouter mutex write
 	ft_write(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->forks[philo->who_am_i]);
 	if (is_it_dead(philo, 2) != 1)
-		return ;
+		return (9);
+	//rajouter mutex write
 	ft_write(philo, "has taken a fork");
+	return (0);
 }

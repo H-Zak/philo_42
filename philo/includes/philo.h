@@ -6,7 +6,7 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:14:43 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/04 14:20:05 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:43:17 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ void			ft_write(t_philo *philo, char *action);
 int				is_it_dead(t_philo *philo, int forks);
 void			unlock_even(t_philo *philo, int forks);
 void			end(t_philo **philo, int nb_philo);
-void			odd(t_philo *philo);
-void			even(t_philo *philo);
+int				odd(t_philo *philo);
+int				even(t_philo *philo);
 int				ft_atoi(const char *nptr);
 t_philo			**init_thread(t_philo **philo, char **argv);
 void			initialisation_mutex(t_philo **philo, int i);
+void			unlock_odd(t_philo *philo, int forks);
+void			unlock_even(t_philo *philo, int forks);
 
 #endif
