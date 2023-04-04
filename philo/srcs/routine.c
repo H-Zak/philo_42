@@ -6,13 +6,11 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:07:23 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/04 16:08:48 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:21:51 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-/* a quoi correspond le p et le premier usleep*/
 
 void	eating(t_philo *philo)
 {
@@ -60,7 +58,6 @@ void	*ft_routine(void *p)
 	pthread_mutex_lock(philo->last_eat);
 	philo->time_last_eat = ft_calculate_time() + philo->time_die;
 	pthread_mutex_unlock(philo->last_eat);
-	//usleep((philo->nb_philo + philo->who_am_i) * 1000);
 	while (philo->nb_eat != 0)
 	{
 		eating(philo);
