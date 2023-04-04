@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
+/*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:14:43 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/03 18:24:39 by zakariyaham      ###   ########.fr       */
+/*   Updated: 2023/04/04 14:20:05 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void			odd(t_philo *philo);
 void			even(t_philo *philo);
 int				ft_atoi(const char *nptr);
 t_philo			**init_thread(t_philo **philo, char **argv);
+void			initialisation_mutex(t_philo **philo, int i);
 
 #endif
