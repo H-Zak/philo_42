@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   write.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
+/*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:47:28 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/03 18:27:26 by zakariyaham      ###   ########.fr       */
+/*   Updated: 2023/04/05 17:29:34 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 long long int	ft_time_print(t_philo *philo)
 {
-	return (ft_calculate_time() - philo->start);
+	return (ft_calculate_time() - philo->start - philo->nb_philo - 1);
 }
 
 void	ft_write(t_philo *philo, char *action)

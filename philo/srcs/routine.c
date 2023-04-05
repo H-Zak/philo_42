@@ -6,7 +6,7 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:07:23 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/04 17:45:06 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:56:43 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,11 @@ void	*ft_routine(void *p)
 	pthread_mutex_lock(philo->last_eat);
 	philo->time_last_eat = ft_calculate_time() + philo->time_die;
 	pthread_mutex_unlock(philo->last_eat);
+	usleep((philo->nb_philo + philo->who_am_i) * 1000);
 	while (philo->nb_eat != 0)
 	{
 		if (eating(philo) == 9)
 			return (NULL);
-		// if (*philo->isdead == 1)
-		// 	return (NULL);
 		if (is_it_dead(philo, 2) != 1)
 			return (NULL);
 		if (philo->nb_eat == 0)
@@ -78,7 +77,6 @@ void	*ft_routine(void *p)
 		sleeping(philo);
 		thinking(philo);
 	}
-	//unlock_even(philo, 2);
 	if (philo->who_am_i % 2 == 1)
 		unlock_odd(philo, 2);
 	else

@@ -6,7 +6,7 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:31:26 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/04 17:43:05 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:56:59 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,10 @@ int	odd(t_philo *philo)
 		pthread_mutex_lock(&philo->forks[philo->who_am_i - 1]);
 	if (is_it_dead(philo, 1) != 1)
 		return (9);
-	//rajouter mutex write
 	ft_write(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->forks[philo->who_am_i]);
 	if (is_it_dead(philo, 2) != 1)
 		return (9);
-	//rajouter mutex write
 	ft_write(philo, "has taken a fork");
 	return (0);
 }
