@@ -14,6 +14,8 @@
 
 int	monitoring(t_philo **philo, int i)
 {
+	while (philo[1]->start > ft_calculate_time())
+		usleep(20);
 	while (*philo[1]->isdead != 1)
 	{
 		pthread_mutex_lock(philo[++i]->last_eat);
@@ -65,7 +67,7 @@ int	main(int argc, char **argv)
 	long long int	time;
 	int				i;
 
-	time = ft_calculate_time();
+	time = ft_calculate_time() + 200;
 	if (check_args(argc, argv) == 1)
 		return (1);
 	ft_one_philo(&argv[1]);

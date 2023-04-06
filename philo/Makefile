@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+         #
+#    By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 18:57:01 by zakariyaham       #+#    #+#              #
-#    Updated: 2023/04/03 18:23:20 by zakariyaham      ###   ########.fr        #
+#    Updated: 2023/04/06 19:37:35 by zhamdouc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ DEPS = $(addprefix ${OBJ_PATH}, ${SRC:.c=.d})
 
 INC = -I./includes/
 
-FLAGS = -Wall -Wextra -Werror -MMD -MP -g -pthread
+FLAGS = -Wall -Wextra -Werror -MMD -MP -g -pthread 
 
 ${NAME} : ${OBJS}
 	cc ${FLAGS} $(OBJS) $(LIBS) -o ${NAME}

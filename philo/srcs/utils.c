@@ -44,7 +44,7 @@ long long int	ft_calculate_time(void)
 	long long int	time;
 
 	gettimeofday(&timeofday, NULL);
-	time = (((timeofday.tv_sec % 100000) * 1000) + (timeofday.tv_usec / 1000));
+	time = (((timeofday.tv_sec) * 1000) + (timeofday.tv_usec / 1000));
 	return (time);
 }
 
