@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:07:23 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/06 19:33:49 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:54:06 by zakariyaham      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	sleeping(t_philo *philo)
 
 void	thinking(t_philo *philo)
 {
+	//peut etre utiliser le usleep de temps donner
 	if (philo->time_eat >= philo->time_sleep)
 		usleep((philo->time_eat * 1000) - (philo->time_sleep * 1000) + 1000);
 	else
@@ -73,7 +74,7 @@ void	*ft_routine(void *p)
 	// philo->time_last_eat = ft_calculate_time() + philo->time_die;
 	pthread_mutex_unlock(philo->last_eat);
 	// usleep((philo->nb_philo + philo->who_am_i) * 1000);
-	while (philo->nb_eat != 0)
+	while (philo->nb_eat != 0)//regarde comment les autres font quand il y a un nombre de repas a faire, comment il tue leur philo, peut etre rajouter un ou deux repas de plus a faire
 	{
 		if (eating(philo) == 9)
 			return (NULL);
