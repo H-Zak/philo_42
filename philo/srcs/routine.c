@@ -6,7 +6,7 @@
 /*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:07:23 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/07 13:54:06 by zakariyaham      ###   ########.fr       */
+/*   Updated: 2023/04/07 14:11:24 by zakariyaham      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	thinking(t_philo *philo)
 	ft_write(philo, "is thinking");
 }
 
-void	*ft_routine(void *p)
+void	*ft_routine(void *p)//provoquer un dernier tour de table 
 {
 	t_philo			*philo;
 
