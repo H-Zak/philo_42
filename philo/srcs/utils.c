@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
+/*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:22:43 by zakariyaham       #+#    #+#             */
-/*   Updated: 2023/04/03 18:24:07 by zakariyaham      ###   ########.fr       */
+/*   Updated: 2023/04/11 12:34:38 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	ft_atoi(const char *nptr)
 	return (num * j);
 }
 
-long long int	ft_calculate_time(void)
+long long	ft_calculate_time(void)
 {
 	struct timeval	timeofday;
-	long long int	time;
+	long long		time;
 
 	gettimeofday(&timeofday, NULL);
 	time = (((timeofday.tv_sec) * 1000) + (timeofday.tv_usec / 1000));

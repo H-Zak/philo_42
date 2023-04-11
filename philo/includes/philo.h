@@ -6,7 +6,7 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:14:43 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/04 17:43:17 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:11:27 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 typedef struct s_philo
 {
 	int				nb_philo;
-	long long int	start;
-	long long int	time_die;
-	long long int	time_eat;
-	long long int	time_sleep;
+	long long		start;
+	long long		time_die;
+	long long		time_eat;
+	long long		time_sleep;
 	int				nb_eat;
 	int				who_am_i;
 	short int		*isdead;
-	long long int	time_last_eat;
+	long long		time_last_eat;
 	pthread_t		*thread;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	*last_eat;
@@ -45,7 +45,7 @@ int				ft_atoi(const char *nptr);
 void			init_struct(t_philo *philo, char **argv, int i);
 void			ft_one_philo(char **args);
 t_philo			**init_thread(t_philo **philo, char **argv);
-long long int	ft_calculate_time(void);
+long long		ft_calculate_time(void);
 void			*ft_routine(void *p);
 void			ft_write(t_philo *philo, char *action);
 int				is_it_dead(t_philo *philo, int forks);
@@ -58,5 +58,6 @@ t_philo			**init_thread(t_philo **philo, char **argv);
 void			initialisation_mutex(t_philo **philo, int i);
 void			unlock_odd(t_philo *philo, int forks);
 void			unlock_even(t_philo *philo, int forks);
+void	ft_usleep(int ms);
 
 #endif

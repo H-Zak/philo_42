@@ -6,13 +6,13 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:47:28 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/05 17:29:34 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/11 11:57:34 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-long long int	ft_time_print(t_philo *philo)
+long long	ft_time_print(t_philo *philo)
 {
 	return (ft_calculate_time() - philo->start);
 }

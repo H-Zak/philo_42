@@ -6,7 +6,7 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:16:08 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/05 17:57:14 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:10:38 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	monitoring(t_philo **philo, int i)
 		pthread_mutex_unlock(philo[i]->last_eat);
 		if (i == philo[1]->nb_philo)
 			i = 0;
-		usleep(50);
+		usleep(1);
 	}
 	return (0);
 }
@@ -64,7 +64,7 @@ void	end(t_philo **philo, int nb_philo)
 int	main(int argc, char **argv)
 {
 	t_philo			**philo;
-	long long int	time;
+	long long		time;
 	int				i;
 
 	time = ft_calculate_time() + 200;

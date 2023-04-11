@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakariyahamdouchi <zakariyahamdouchi@st    +#+  +:+       +#+        */
+/*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:07:23 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/07 14:11:24 by zakariyaham      ###   ########.fr       */
+/*   Updated: 2023/04/11 14:15:49 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	sleeping(t_philo *philo)
 	else
 		pthread_mutex_unlock(&philo->forks[philo->who_am_i - 1]);
 	ft_write(philo, "is sleeping");
-	usleep(philo->time_sleep * 1000);
+	usleep(philo->time_sleep * 999);
 	if (is_it_dead(philo, 0) != 1)
 		return ;
 }
@@ -53,13 +53,17 @@ void	sleeping(t_philo *philo)
 void	thinking(t_philo *philo)
 {
 	//peut etre utiliser le usleep de temps donner
+	ft_write(philo, "is thinking");
 	if (philo->time_eat >= philo->time_sleep)
+	{
 		usleep((philo->time_eat * 1000) - (philo->time_sleep * 1000) + 1000);
+	}
 	else
+	{
 		usleep(1);
+	}
 	if (is_it_dead(philo, 0) == 0)
 		return ;
-	ft_write(philo, "is thinking");
 }
 
 void	*ft_routine(void *p)//provoquer un dernier tour de table 
