@@ -6,7 +6,7 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:25:47 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/11 14:15:20 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:56:54 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ft_one_philo(char **argv)
 	if (ft_atoi(argv[0]) != 1)
 		return ;
 	printf("0 : 1 has taken his right fork\n\n");
-	usleep(ft_atoi(argv[1]) * 1000);
-	printf("%i : 1 died\n\n", ft_atoi(argv[1]));
+	ft_usleep(ft_atoi(argv[1]));
+	printf("%i : 1 died\n\n", ft_atoi(argv[1]) + 1);
 	exit (0);
 }
 

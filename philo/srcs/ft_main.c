@@ -6,7 +6,7 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:16:08 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/11 14:10:38 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:12:45 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int	monitoring(t_philo **philo, int i)
 {
+	int j;
 	while (philo[1]->start > ft_calculate_time())
 		usleep(20);
+	j = 1;
+	ft_usleep(philo[1]->time_die);
 	while (*philo[1]->isdead != 1)
 	{
 		pthread_mutex_lock(philo[++i]->last_eat);
@@ -33,7 +36,7 @@ int	monitoring(t_philo **philo, int i)
 		pthread_mutex_unlock(philo[i]->last_eat);
 		if (i == philo[1]->nb_philo)
 			i = 0;
-		usleep(1);
+		usleep(50);
 	}
 	return (0);
 }

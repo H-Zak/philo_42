@@ -6,7 +6,7 @@
 /*   By: zhamdouc <zhamdouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:07:23 by zhamdouc          #+#    #+#             */
-/*   Updated: 2023/04/11 14:15:49 by zhamdouc         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:16:51 by zhamdouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	eating(t_philo *philo)
 	philo->time_last_eat = ft_calculate_time();
 	pthread_mutex_unlock(philo->last_eat);
 	ft_write(philo, "is eating");
-	usleep(philo->time_eat * 1000);
+	ft_usleep(philo->time_eat);
 	if (is_it_dead(philo, 2) != 1)
 		return (9);
 	return (0);
@@ -44,26 +44,45 @@ void	sleeping(t_philo *philo)
 		pthread_mutex_unlock(&philo->forks[philo->nb_philo]);
 	else
 		pthread_mutex_unlock(&philo->forks[philo->who_am_i - 1]);
-	ft_write(philo, "is sleeping");
-	usleep(philo->time_sleep * 999);
 	if (is_it_dead(philo, 0) != 1)
 		return ;
+	ft_write(philo, "is sleeping");
+	ft_usleep(philo->time_sleep);
+}
+
+void	ft_usleep(int ms)
+{
+	long int	time;
+
+	time = ft_calculate_time();
+	while (ft_calculate_time() - time < ms)
+		usleep(100);
 }
 
 void	thinking(t_philo *philo)
 {
 	//peut etre utiliser le usleep de temps donner
-	ft_write(philo, "is thinking");
-	if (philo->time_eat >= philo->time_sleep)
-	{
-		usleep((philo->time_eat * 1000) - (philo->time_sleep * 1000) + 1000);
-	}
-	else
-	{
-		usleep(1);
-	}
 	if (is_it_dead(philo, 0) == 0)
 		return ;
+	ft_write(philo, "is thinking");
+	if(philo->nb_philo % 2 == 1)
+		ft_usleep(1);
+	// if (philo->time_eat >= philo->time_sleep)
+	// {
+	// 	ft_usleep(1);
+	// }
+	// else
+	// {
+	// 	ft_usleep(1);
+	// }
+	// if (philo->time_eat > philo->time_sleep)
+	// {
+	// 	ft_usleep((philo->time_eat) - (philo->time_sleep) + 1);
+	// }
+	// else
+	// {
+	// 	ft_usleep((philo->time_sleep) - (philo->time_eat) + 1);
+	// }
 }
 
 void	*ft_routine(void *p)//provoquer un dernier tour de table 
@@ -72,7 +91,9 @@ void	*ft_routine(void *p)//provoquer un dernier tour de table
 
 	philo = (t_philo *)p;
 	while (philo->start > ft_calculate_time())
-		usleep(20);
+		ft_usleep(20);
+	if (philo->who_am_i % 2 == 0)
+		ft_usleep(philo->time_eat / 2);
 	pthread_mutex_lock(philo->last_eat);
 	philo->time_last_eat = philo->start;
 	// philo->time_last_eat = ft_calculate_time() + philo->time_die;
